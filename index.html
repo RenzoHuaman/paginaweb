@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Rutas en Santiago</title>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- Mapa donde se visualizarán las rutas -->
+    <div id="map"></div>
+
+    <!-- Formulario para ingresar las direcciones -->
+    <form id="location-form">
+        <input id="from" type="text" placeholder="¿Dónde estoy?" required>
+        <input id="to" type="text" placeholder="¿A dónde quiero ir?" required>
+        <button type="submit">Buscar Ruta</button>
+        <button type="button" id="clear-route">Limpiar Ruta</button>
+        <div id="loading-spinner" class="spinner" style="display:none;"></div>
+    </form>
+    
+    <!-- Botón de "Cambio de Ruta" que aparecerá después de calcular la ruta -->
+    <button id="change-route" style="display:none;">Cambio de Ruta</button>
+
+    <!-- Script de Google Maps con Places API incluida -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPduPBYOLSdyJvi1CTHqfk6qqwNKfuKh4&libraries=places"></script>
+
+    <!-- Archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
