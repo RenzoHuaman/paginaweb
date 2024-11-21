@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa de Rutas en Santiago</title>
-    <!-- Estilos personalizados -->
+    <title>Mapa - Conductores y Deportistas</title>
+    <meta name="description" content="Aplicación para conductores y deportistas en Santiago, Chile, con información sobre rutas y calidad del aire.">
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <!-- Mapa donde se visualizarán las rutas -->
-    <div id="map"></div>
+    <!-- Menú de selección -->
+    <div id="menu">
+        <button id="btn-conductores" class="menu-button" aria-label="Mostrar opciones para conductores">Conductores</button>
+        <button id="btn-deportistas" class="menu-button" aria-label="Mostrar mapa para deportistas">Deportistas</button>
+    </div>
 
-    <!-- Formulario para ingresar las direcciones -->
-    <form id="location-form">
-        <input id="from" type="text" placeholder="¿Dónde estoy?" required>
-        <input id="to" type="text" placeholder="¿A dónde quiero ir?" required>
+    <!-- Contenedor del mapa -->
+    <div id="map" aria-label="Mapa interactivo de Google"></div>
+
+    <!-- Información adicional para calidad del aire -->
+    <div id="air-quality-info" style="display: none;" aria-live="polite">
+        <h2>Calidad del Aire</h2>
+        <p><strong>PM2.5:</strong> <span id="pm25-value">-</span> µg/m³</p>
+        <p><strong>PM10:</strong> <span id="pm10-value">-</span> µg/m³</p>
+        <p><strong>Estado:</strong> <span id="air-quality-status">-</span></p>
+    </div>
+
+    <!-- Formulario para buscar rutas (Conductores) -->
+    <form id="location-form" style="display: none;">
+        <input id="from" type="text" placeholder="¿Dónde estoy?" required pattern=".{3,}" aria-label="Ubicación de inicio">
+        <input id="to" type="text" placeholder="¿A dónde quiero ir?" required pattern=".{3,}" aria-label="Destino">
         <button type="submit">Buscar Ruta</button>
         <button type="button" id="clear-route">Limpiar Ruta</button>
-        <div id="loading-spinner" class="spinner" style="display:none;"></div>
     </form>
-    
-    <!-- Botón de "Cambio de Ruta" que aparecerá después de calcular la ruta -->
-    <button id="change-route" style="display:none;">Cambio de Ruta</button>
 
-    <!-- Script de Google Maps con Places API incluida -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPduPBYOLSdyJvi1CTHqfk6qqwNKfuKh4&libraries=places"></script>
+    <!-- Botón de cambio de ruta -->
+    <button id="change-route" style="display: none;">Cambio de Ruta</button>
 
-    <!-- Archivo JavaScript -->
-    <script src="script.js"></script>
+    <!-- Script de Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPduPBYOLSdyJvi1CTHqfk6qqwNKfuKh4&libraries=places,visualization" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
